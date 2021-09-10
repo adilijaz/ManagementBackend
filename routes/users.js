@@ -6,6 +6,7 @@ const router = express.Router();
 
 const { User, validate } = require("../models/users");
 
+// Get detail of login user
 router.get('/loginUser', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select(['-password','-token','-_id','-__v']);
     res.send(user);
