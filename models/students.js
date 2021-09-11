@@ -62,6 +62,19 @@ function validateStudent(student){
     })
     return schema.validate(student)
 }
+function validateUpdateStudent(student){
+    const schema = Joi.object({
+        name:Joi.string().min(3).max(50),
+        fatherName:Joi.string().min(3).max(50),
+        email:Joi.string().min(5).max(50).email(),
+        class:Joi.number().min(9).max(12),
+        fee:Joi.number().min(4000).max(10000),
+        address:Joi.string().min(1).max(255),
+        phone:Joi.string().min(1).max(255),
+    })
+    return schema.validate(student)
+}
 
 exports.Student = Student
 exports.validate = validateStudent
+exports.validateUpdate = validateUpdateStudent
