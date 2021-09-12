@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Student, validate, validateUpdate } = require("../models/students");
+const {Fee} = require('../models/fee')
 const _ = require("lodash");
 
 router.get("/", async (req, res) => {
@@ -31,6 +32,8 @@ router.post("/addStudent", async (req, res) => {
     ])
   );
   await student.save();
+  let fee = new Fee({student:student})
+  await fee.save()
   res.status(200).send(`Student ${student.name} ${student.fatherName} Added`);
 });
 

@@ -10,7 +10,7 @@ const error = require('../middlewares/error')
 
 module.exports = function(app){
     app.use(express.json())
-    app.use('./api/fee',fee)
+    app.use('/api/fee',fee)
     app.use('/api/students', student)
     app.use('/api/users', users)
     app.use('/api/login', auth)
